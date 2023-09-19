@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Penal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <h1 style="margin-left: 40%; color: black; margin-top: 2vh;">Calculadora Penal</h1>
+    <form id="penaltyCalculatorForm">
+        <div class="mb-3">
+            <label for="name" class="form-label custom-label" style="margin-left: 50px;">Nome do Indivíduo:</label>
+            <textarea class="form-control custom-textarea" id="name" name="name" style="height: 30px; margin-left: 50px; width: 80%;"
+                required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="passport" class="form-label custom-label" style="margin-left: 50px;">Passaporte do Indivíduo:</label>
+            <textarea class="form-control custom-textarea" id="passport" name="passport" style="height: 30px; margin-left: 50px; width: 80%;" required></textarea>
+        </div>
+        <div style="display: flex;">
+            <label for="crime" class="form-label custom-label" style="display: inline; margin-left: 50px;" onclick="habilitarTextarea()">Crimes:</label>
+            <select class="form-select custom-select" id="crime" name="crime" style="width: 50%; margin-left: 25px;">
+                <option value="Atropelamento" data-tempoPena="30" data-valorMulta="15000" data-fianca="20000">Atropelamento</option>
+                <option value="Alta Velocidade" data-tempoPena="5" data-valorMulta="1000" data-fianca="15000">Alta Velocidade</option>
+                <option value="Direção Perigosa" data-tempoPena="30" data-valorMulta="15000" data-fianca="20000">Direção Perigosa</option>
+                <option value="Ultrapassar Sinal Vermelho" data-tempoPena="5" data-valorMulta="10000" data-fianca="15000">Ultrapassar Sinal Vermelho</option>
+                <option value="Andar Com Veiculo Danificado" data-tempoPena="5" data-valorMulta="10000" data-fianca="15000">Andar Com Veiculo Danificado</option>
+                <option value="Dirigir Embriagado" data-tempoPena="20" data-valorMulta="25000" data-fianca="30000">Dirigir Embriagado</option>
+                <option value="Estacionar em Local Proibido" data-tempoPena="5" data-valorMulta="15000" data-fianca="15000">Estacionar em Local Proibido</option>
+                <option value="Abandono de Veiculo" data-tempoPena="5" data-valorMulta="10000" data-fianca="15000">Abandono de Veiculo</option>
+                <option value="Utilização de Veiculo Público para Cometer Crime" data-tempoPena="40" data-valorMulta="50000" data-fianca="60000">Utilização de Veiculo Público para Cometer Crime</option>
+                <option value="Fuga" data-tempoPena="20" data-valorMulta="20000" data-fianca="25000">Fuga</option>
+                <option value="Omissão de Socorro" data-tempoPena="30" data-valorMulta="50000" data-fianca="60000">Omissão de Socorro</option>
+                <option value="Dano ao Patrimônio Público" data-tempoPena="10" data-valorMulta="15000" data-fianca="20000">Dano ao Patrimônio Público</option>
+                <option value="Desobediência a Autoridade" data-tempoPena="60" data-valorMulta="70000" data-fianca="0">Desobediência a Autoridade</option>
+                <option value="Injúria" data-tempoPena="20" data-valorMulta="20000" data-fianca="25000">Injúria</option>
+                <option value="Difamação" data-tempoPena="25" data-valorMulta="20000" data-fianca="25000">Difamação</option>
+                <option value="Roubo" data-tempoPena="60" data-valorMulta="30000" data-fianca="40000">Roubo</option>
+                <option value="Furto" data-tempoPena="50" data-valorMulta="45000" data-fianca="55000">Furto</option>
+                <option value="Desordem Pública" data-tempoPena="50" data-valorMulta="50000" data-fianca="70000">Desordem Pública </option>
+                <option value="Corrida Ilegal" data-tempoPena="40" data-valorMulta="20000" data-fianca="30000">Corrida Ilegal</option>
+                <option value="Ocultação de Provas" data-tempoPena="80" data-valorMulta="70000" data-fianca="0">Ocultação de Provas</option>
+                <option value="Extorsão" data-tempoPena="40" data-valorMulta="20000" data-fianca="25000">Extorsão</option>
+                <option value="Falsidade Ideológica" data-tempoPena="40" data-valorMulta="35000" data-fianca="0">Falsidade Ideológica</option>
+                <option value="Corrupção" data-tempoPena="500" data-valorMulta="300000" data-fianca="1000000">Corrupção</option>
+                <option value="Ameaça" data-tempoPena="20" data-valorMulta="15000" data-fianca="20000">Ameaça</option>
+                <option value="Ato Obsceno" data-tempoPena="15" data-valorMulta="15000" data-fianca="20000">Ato Obsceno</option>
+                <option value="Furto de Veículo" data-tempoPena="40" data-valorMulta="30000" data-fianca="40000">Furto de Veículo</option>
+                <option value="Lesão Corporal" data-tempoPena="20" data-valorMulta="10000" data-fianca="15000">Lesão Corporal</option>
+                <option value="Tráfico de Drogas (+20 UND.)" data-tempoPena="50" data-qntd="1" data-valor="2000" data-fianca="250000">Tráfico de Drogas (+20 UND.)</option>
+                <option value="Tráfico de Munições Leve" data-tempoPena="40" data-qntd="1" data-valor="500" data-fianca="0">Tráfico de Munições Leve</option>
+                <option value="Tráfico de Munições Pesado" data-tempoPena="80" data-qntd="1" data-valor="1000" data-fianca="0">Tráfico de Munições Pesado</option>
+                <option value="Tráfico de Armas Leve" data-tempoPena="60" data-qntd="1" data-valor="5000" data-fianca="0">Tráfico de Armas Leve</option>
+                <option value="Tráfico de Armas Pesado" data-tempoPena="100" data-qntd="1" data-valor="10000" data-fianca="0">Tráfico de Armas Pesado</option>
+                <option value="Dinheiro Sujo" data-tempoPena="50" data-qntd="1" data-valor="200" data-fianca="0">Dinheiro Sujo</option>
+                <option value="Assalto a Caixinha" data-tempoPena="30" data-valorMulta="20000" data-fianca="30000">Assalto a Caixinha</option>
+                <option value="Porte de Arma Leve" data-tempoPena="30" data-valorMulta="30000" data-fianca="40000">Porte de Arma Leve</option>
+                <option value="Porte de Arma Pesada" data-tempoPena="40" data-valorMulta="40000" data-fianca="50000">Porte de Arma Pesada</option>
+                <option value="Equipamento Balístico" data-tempoPena="25" data-valorMulta="25000" data-fianca="30000">Equipamento Balístico</option>
+                <option value="Máscara/ Ocultação Facial" data-tempoPena="15" data-valorMulta="25000" data-fianca="30000">Máscara/Ocultação Facial</option>
+                <option value="Formação de Quadrilha" data-tempoPena="50" data-valorMulta="50000" data-fianca="0">Formação de Quadrilha</option>
+                <option value="Sequestro" data-tempoPena="60" data-valorMulta="60000" data-fianca="100000">Sequestro</option>
+                <option value="Tentativa de Homicídio" data-tempoPena="50" data-valorMulta="50000" data-fianca="100000">Tentativa de Homicídio</option>
+                <option value="Latrocínio" data-tempoPena="70" data-valorMulta="100000" data-fianca="0">Latrocínio</option>
+                <option value="Material Ilícito" data-tempoPena="30" data-qntd="1" data-valor="100" data-fianca="0">Material Ilícito</option>
+                <option value="Crime Cibernético (Crime Virtual)" data-tempoPena="30" data-valorMulta="40000" data-fianca="50000">Crime Cibernético (Crime Virtual)</option>
+
+            </select>
+            <label for="qntd" class="form-label custom-label" style="margin-left: 50px; margin-right: 25px;">Quantidade:</label>
+            <textarea class="form-control custom-textarea" id="qntd" name="qntd" style="height: 30px; width: 17.5%"></textarea>
+        </div>
+        <br>
+
+        <div class="custom-checkbox-group mb-3">
+            <label class="form-check-label" style="margin-left: 3vw;" for="negociacao">Negociação com
+                Advogado:</label>
+            <input type="range" name="vol" value="0" min="0" max="100" step="5" oninput="display.value=value"
+                onchange="display.value=value">
+            <input type="text" id="display" value="0" readonly style="width: 50px;">
+            <label for="text" class="form-label custom-label style_text">%</label>
+
+
+            <label class="form-check-label" for="entregar" style="margin-left: 1vw; ">Se Entregar:</label>
+            <input class="form-check-input " type="checkbox" id="entregar" name="entregar">
+            <label for="entregar" class="style_text">30%</label>
+
+            <label class="form-check-label" for="colaborar" style="margin-left: 1vw;">Colaborar:</label>
+            <input class="form-check-input" type="checkbox" id="colaborar" name="colaborar">
+            <label for="colaborar" class="form-label custom-label style_text">25%</label>
+
+            <label class="form-check-label" for="primario" style="margin-left: 2vw;">Reu Primário:</label>
+            <input class="form-check-input" type="checkbox" id="primario" name="primario">
+            <label for="primario" class="form-label custom-label style_text">50%</label>
+
+            <label class="form-check-label" for="cumplice" style="margin-left: 2vw;">Cúmplice:</label>
+            <input class="form-check-input" type="checkbox" id="cumplice" name="cumplice">
+            <label for="cumplice" class="form-label custom-label style_text">30%</label>
+
+            <label class="form-check-label" for="desacato" style="margin-left: 1vw;">Desacato:</label>
+            <input class="form-check-input" type="checkbox" id="desacato" name="desacato">
+            <label for="desacato" class="form-label custom-label style_text">Tira a possibilidade de fiança</label>
+
+        </div>
+        <br>
+        <br>
+        <center>
+            <button id="addCrime" class="btn btn-primary" style="width: 50vw;">Adicionar</button><br>
+        </center>
+
+        <table class="custom-table table table-bordered table-dark mt-5">
+            <thead>
+                <tr>
+                    <th>Crime</th>
+                    <th>Quantidade Total</th>
+                    <th>A Cada</th>
+                    <th>Valor Unitário</th>
+                    <th>Tempo de Serviço (meses)</th>
+                    <th>Multa</th>
+                    <th>Fiança</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="crimeTableBody">
+                <!-- Os dados da tabela serão inseridos aqui dinamicamente -->
+            </tbody>
+        </table>
+
+        <center>
+            <button id="finalizar" style="width: 50vw;" class="btn btn-success">Finalizar</button><br>
+        </center>
+        <script src="funcoes.js"></script>
+    </form>
+
+    <label class="form-check-label" style="margin-left: 3vw;" for="negociacao">Developed by: Jaack</label>
+</body>
+
+</html>
